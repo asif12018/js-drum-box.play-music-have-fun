@@ -6,13 +6,14 @@ for (let i = 0; i < numberOfDrum; i++) {
         var buttonHtml = this.innerHTML;
         
         makeSound(buttonHtml);
+        buttonAnimation(buttonHtml);
 
     });
 }
 document.addEventListener('keydown', function(event){
-     
     var key = event.key;
     makeSound(key);
+    buttonAnimation(key);
 
    })
 
@@ -50,4 +51,13 @@ function makeSound(key){
             break;
     }
         
+}
+
+
+function buttonAnimation(key){
+   var activeButton = document.querySelector('.' + key);
+   activeButton.classList.add('pressed');
+   setTimeout(function(){
+    activeButton.classList.remove('pressed');
+   },150)
 }
